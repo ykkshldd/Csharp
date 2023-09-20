@@ -1,1 +1,180 @@
-C# 1
+using System;
+
+class Calculator
+{
+    static void Main(string[] args)
+    {
+        Console.WriteLine("Калькулятор");
+        Console.WriteLine("Выберите операцию:");
+        Console.WriteLine("1. Сложить 2 числа");
+        Console.WriteLine("2. Вычесть первое из второго");
+        Console.WriteLine("3. Перемножить два числа");
+        Console.WriteLine("4. Разделить первое на второе");
+        Console.WriteLine("5. Возвести в степень N первое число");
+        Console.WriteLine("6. Найти квадратный корень из числа");
+        Console.WriteLine("7. Найти 1 процент от числа");
+        Console.WriteLine("8. Найти факториал из числа");
+        Console.WriteLine("9. Выйти из программы");
+
+        int operation;
+
+        while (true)
+        {
+            Console.Write("Введите номер операции: ");
+            if (!int.TryParse(Console.ReadLine(), out operation))
+            {
+                Console.WriteLine("Ошибка! Введите целое число.");
+                continue;
+            }
+
+            if (operation == 9)
+                break;
+
+            double number1, number2, result;
+
+            switch (operation)
+            {
+                case 1: // Сложение
+                    Console.Write("Введите первое число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number1))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    Console.Write("Введите второе число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number2))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    result = number1 + number2;
+                    Console.WriteLine($"Результат: {result}");
+                    break;
+
+                case 2: // Вычитание
+                    Console.Write("Введите первое число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number1))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    Console.Write("Введите второе число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number2))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    result = number1 - number2;
+                    Console.WriteLine($"Результат: {result}");
+                    break;
+
+                case 3: // Умножение
+                    Console.Write("Введите первое число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number1))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    Console.Write("Введите второе число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number2))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    result = number1 * number2;
+                    Console.WriteLine($"Результат: {result}");
+                    break;
+
+                case 4: // Деление
+                    Console.Write("Введите первое число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number1))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    Console.Write("Введите второе число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number2) || number2 == 0)
+                    {
+                        Console.WriteLine("Ошибка! Введите ненулевое число.");
+                        continue;
+                    }
+                    result = number1 / number2;
+                    Console.WriteLine($"Результат: {result}");
+                    break;
+
+                case 5: // Возведение в степень
+                    Console.Write("Введите число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number1))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    Console.Write("Введите степень: ");
+                    int power;
+                    if (!int.TryParse(Console.ReadLine(), out power))
+                    {
+                        Console.WriteLine("Ошибка! Введите целое число.");
+                        continue;
+                    }
+
+                    result = Math.Pow(number1, power);
+                    Console.WriteLine($"Результат: {result}");
+                    break;
+
+                case 6: // Квадратный корень
+                    Console.Write("Введите число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number1) || number1 < 0)
+                    {
+                        Console.WriteLine("Ошибка! Введите положительное число.");
+                        continue;
+                    }
+
+                    result = Math.Sqrt(number1);
+                    Console.WriteLine($"Результат: {result}");
+                    break;
+
+                case 7: // 1 процент от числа
+                    Console.Write("Введите число: ");
+                    if (!double.TryParse(Console.ReadLine(), out number1))
+                    {
+                        Console.WriteLine("Ошибка! Введите число.");
+                        continue;
+                    }
+
+                    result = number1 * 0.01;
+                    Console.WriteLine($"Результат: {result}");
+                    break;
+
+                case 8: // Факториал
+                    Console.Write("Введите число: ");
+                    if (!int.TryParse(Console.ReadLine(), out int factorialNumber) || factorialNumber < 0)
+                    {
+                        Console.WriteLine("Ошибка! Введите положительное целое число.");
+                        continue;
+                    }
+
+                    result = 1;
+                    for (int i = 2; i <= factorialNumber; i++)
+                    {
+                        result *= i;
+                    }
+                    Console.WriteLine($"Результат: {result}");
+                    break;
+
+                default:
+                    Console.WriteLine("Ошибка! Введите номер операции от 1 до 9.");
+                    break;
+            }
+        }
+
+        Console.WriteLine("Программа завершена.");
+    }
+}
