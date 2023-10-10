@@ -1,0 +1,106 @@
+using System;
+
+class lolkek
+{
+    static void Main()
+    {
+        int choice;
+
+        do
+        {
+            Console.WriteLine("Выберите программу:");
+            Console.WriteLine("1. Игра 'Угадай число'");
+            Console.WriteLine("2. Таблица умножения");
+            Console.WriteLine("3. Вывод делителей числа");
+            Console.WriteLine("4. Закрыть приложение");
+            Console.Write("Выберите программу: ");
+            choice = int.Parse(Console.ReadLine());
+
+            switch (choice)
+            {
+                case 1:
+                    chislo();
+                    break;
+                case 2:
+                    table();
+                    break;
+                case 3:
+                    delenie();
+                    break;
+                case 4:
+                    Console.WriteLine("Приложение закрыто.");
+                    break;
+                default:
+                    Console.WriteLine("Неверный выбор. Попробуйте еще раз.");
+                    break;
+            }
+
+            Console.WriteLine();
+        }
+        while (choice != 0);
+    }
+
+    static void chislo()
+    {
+        Random random = new Random();
+        int chislo = random.Next(1, 101);
+        int attempts = 0;
+        int guess;
+
+        Console.WriteLine("Игра 'Угадай число'");
+        Console.WriteLine("Попробуйте угадать число от 0 до 100!");
+
+        do
+        {
+            Console.Write("Введите ваше число: ");
+            guess = int.Parse(Console.ReadLine());
+            attempts++;
+
+            if (guess < chislo)
+            {
+                Console.WriteLine("Загаданное число больше.");
+            }
+            else if (guess > chislo)
+            {
+                Console.WriteLine("Загаданное число меньше.");
+            }
+            else
+            {
+                Console.WriteLine("Поздравляю! Вы угадали число {0} за {1} попыток.", chislo, attempts);
+            }
+        }
+        while (guess != chislo);
+    }
+
+    static void table()
+    {
+        Console.WriteLine("Таблица умножения");
+
+        for (int i = 1; i <= 9; i++)
+        {
+            for (int j = 1; j <= 9; j++)
+            {
+                Console.Write("{0,4}", i * j);
+            }
+            Console.WriteLine();
+        }
+    }
+
+    static void delenie()
+    {
+        Console.Write("Введите число: ");
+        int number = int.Parse(Console.ReadLine());
+
+        Console.Write("Делители числа {0}: ", number);
+
+        for (int i = 1; i <= number; i++)
+        {
+            if (number % i == 0)
+            {
+                Console.Write(i + " ");
+            }
+        }
+
+        Console.WriteLine();
+    }
+}
